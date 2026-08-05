@@ -1,0 +1,16 @@
+[project]
+name = "day09-2a202601409-ngotuanhung"
+version = "0.1.0"
+description = "Multi-Agent E-commerce Dispute Resolution (Olist dataset, EC_POLICY_V1)"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "langchain-ollama>=1.1.0",
+    "langgraph>=1.2.10",
+    "pandas>=3.0.5",
+    "pydantic>=2.13.4",
+    "python-dotenv>=1.2.2",
+]
+
+[project.scripts]
+dispute = "src.main:main"

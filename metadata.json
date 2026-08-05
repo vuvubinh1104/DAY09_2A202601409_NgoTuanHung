@@ -1,0 +1,22 @@
+{
+  "model_name": "qwen3:4b",
+  "model_family": "Qwen3",
+  "parameter_size": "4B",
+  "quantization": "Q4_K_M",
+  "framework": "LangChain + LangGraph",
+  "runtime": "Ollama",
+  "ollama_model_tag": "qwen3:4b",
+  "temperature": 0,
+  "architecture": "Supervisor + Specialized Agents + Verifier",
+  "agents": [
+    "coordinator",
+    "order_seller_agent",
+    "payment_agent",
+    "delivery_agent",
+    "policy_agent",
+    "verifier_agent"
+  ],
+  "policy_version": "EC_POLICY_V1",
+  "student_id": "2A202601409",
+  "student_name": "Ngo Tuan Hung"
+}
