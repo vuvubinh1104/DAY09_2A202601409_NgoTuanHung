@@ -9,6 +9,7 @@ All business logic is in the specialized agents and policy.py.
 from __future__ import annotations
 
 import logging
+import os
 from typing import Any
 
 from langchain_ollama import ChatOllama
@@ -18,6 +19,7 @@ from src.schemas import AgentState
 
 logger = logging.getLogger(__name__)
 
+# Local Ollama model (qwen3:4b chạy trên localhost:11434)
 MODEL_NAME = "qwen3:4b"
 
 _llm: ChatOllama | None = None
@@ -26,7 +28,13 @@ _llm: ChatOllama | None = None
 def _get_llm() -> ChatOllama:
     global _llm
     if _llm is None:
-        _llm = ChatOllama(model=MODEL_NAME, temperature=0)
+        # Đọc OLLAMA_HOST từ env (set bởi .env), fallback về localhost
+        base_url = os.getenv("OLLAMA_HOST", "http://localhost:11434")
+        _llm = ChatOllama(
+            model=MODEL_NAME,
+            base_url=base_url,
+            temperature=0,
+        )
     return _llm
 
 
